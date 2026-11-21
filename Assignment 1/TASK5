@@ -1,0 +1,57 @@
+class ParkingTicket {
+    static int ticketCounter = 100;
+    int ticketNumber;
+
+    ParkingTicket() {
+        ticketNumber = ++ticketCounter;
+    }
+
+    void display() {
+        System.out.println("Ticket Number: " + ticketNumber);
+    }
+}
+
+class ParkingFacility {
+    static int totalOccupied = 0;
+
+    void park() {
+        totalOccupied++;
+    }
+
+    void remove() {
+        if (totalOccupied > 0)
+            totalOccupied--;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        ParkingFacility p1 = new ParkingFacility();
+        ParkingFacility p2 = new ParkingFacility();
+
+        ParkingTicket t1 = new ParkingTicket();
+        ParkingTicket t2 = new ParkingTicket();
+        ParkingTicket t3 = new ParkingTicket();
+
+        p1.park();
+        p1.park();
+        p2.park();
+
+        t1.display();
+        t2.display();
+        t3.display();
+
+        System.out.println("Total Occupied: " + ParkingFacility.totalOccupied);
+
+        p1.remove();
+
+        System.out.println("After Vehicle Exit: " + ParkingFacility.totalOccupied);
+
+        t1 = null;
+        t2 = null;
+        t3 = null;
+
+        System.out.println("Tickets are eligible for garbage collection");
+    }
+}
