@@ -1,0 +1,111 @@
+
+class Vehicle {
+    String number;
+
+    Vehicle(String number) {
+        this.number = number;
+    }
+
+    double fee() {
+        return 30;
+    }
+}
+
+class Car extends Vehicle {
+    Car(String number) {
+        super(number);
+    }
+
+    double fee() {
+        return 30;
+    }
+}
+
+class EBike extends Vehicle {
+    EBike(String number) {
+        super(number);
+    }
+
+    double fee() {
+        return 50;
+    }
+}
+
+class DeliveryVan extends Vehicle {
+    DeliveryVan(String number) {
+        super(number);
+    }
+
+    double fee() {
+        return 60;
+    }
+}
+
+class ParkingLot {
+    int[] slots = {2, 3, 4, 3, 5};
+    String[][] parking = new String[5][];
+
+    ParkingLot() {
+        for (int i = 0; i < 5; i++) {
+            parking[i] = new String[slots[i]];
+        }
+    }
+
+    void park(Vehicle v, int floor, int slot, boolean pass) {
+
+        if (floor < 1 || floor > 5 ||
+            slot < 1 || slot > slots[floor - 1]) {
+            System.out.println("Invalid floor or slot");
+            return;
+        }
+
+        if (parking[floor - 1][slot - 1] != null) {
+            System.out.println("Slot occupied");
+            return;
+        }
+
+        parking[floor - 1][slot - 1] = v.number;
+
+        System.out.println(v.number + " parked successfully");
+
+        if (pass) {
+            System.out.println("One day pass applied");
+            System.out.println("Fee: Rs. 100");
+        } else {
+            System.out.println("Fee: Rs. " + v.fee());
+        }
+    }
+
+    void display() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Floor " + (i + 1));
+
+            for (int j = 0; j < slots[i]; j++) {
+                System.out.println("Slot " + (j + 1) +
+                    ": " + (parking[i][j] == null ?
+                    "Empty" : parking[i][j]));
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        ParkingLot p = new ParkingLot();
+
+        p.park(new Car("TN01A1"), 1, 1, false);
+
+        p.park(new EBike("TN02B2"), 2, 1, false);
+
+        p.park(new DeliveryVan("TN03C3"), 3, 1, false);
+
+        p.park(new Car("TN04D4"), 4, 1, true);
+
+        p.park(new EBike("TN05E5"), 5, 1, false);
+
+        System.out.println("\nPARKING DETAILS");
+
+        p.display();
+    }
+}
