@@ -1,0 +1,61 @@
+class Vehicle {
+    String number;
+    String type;
+
+    Vehicle() {
+        this("TN01AB1111", "Car");
+    }
+
+    Vehicle(String number, String type) {
+        this.number = number;
+        this.type = type;
+    }
+
+    void display() {
+        System.out.println(number + " - " + type);
+    }
+}
+
+class ParkingSlot {
+    int slotNo;
+
+    ParkingSlot(int slotNo) {
+        this.slotNo = slotNo;
+    }
+}
+
+class ParkingTicket {
+    static int count = 100;
+    int ticketNo;
+    String vehicleNo;
+
+    ParkingTicket(String vehicleNo) {
+        this.ticketNo = ++count;
+        this.vehicleNo = vehicleNo;
+    }
+
+    void display() {
+        System.out.println("Ticket: " + ticketNo);
+        System.out.println("Vehicle: " + vehicleNo);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Vehicle v1 = new Vehicle();
+        Vehicle v2 = new Vehicle("TN02CD2222", "Bike");
+
+        ParkingSlot s1 = new ParkingSlot(1);
+        ParkingTicket t1 = new ParkingTicket(v1.number);
+        ParkingTicket t2 = new ParkingTicket(v2.number);
+
+        v1.display();
+        v2.display();
+
+        System.out.println("Slot: " + s1.slotNo);
+
+        t1.display();
+        t2.display();
+    }
+}
