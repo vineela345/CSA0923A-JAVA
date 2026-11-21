@@ -1,0 +1,67 @@
+class Vehicle {
+    String regNo;
+    String type;
+    int entryTime;
+
+    Vehicle(String regNo, String type, int entryTime) {
+        this.regNo = regNo;
+        this.type = type;
+        this.entryTime = entryTime;
+    }
+
+    void display() {
+        System.out.println("Registration Number: " + regNo);
+        System.out.println("Vehicle Type: " + type);
+        System.out.println("Entry Time: " + entryTime);
+    }
+}
+
+class ParkingSlot {
+    int slotNumber;
+    boolean occupied;
+
+    ParkingSlot(int slotNumber) {
+        this.slotNumber = slotNumber;
+        occupied = false;
+    }
+
+    void parkVehicle() {
+        occupied = true;
+    }
+}
+
+class ParkingTicket {
+    int ticketNumber;
+    String regNo;
+
+    ParkingTicket(int ticketNumber, String regNo) {
+        this.ticketNumber = ticketNumber;
+        this.regNo = regNo;
+    }
+
+    void display() {
+        System.out.println("Ticket Number: " + ticketNumber);
+        System.out.println("Vehicle Registration: " + regNo);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Vehicle v = new Vehicle("TN10AB1234", "Car", 10);
+        ParkingSlot slot = new ParkingSlot(1);
+        ParkingTicket ticket = new ParkingTicket(101, "TN10AB1234");
+
+        slot.parkVehicle();
+
+        System.out.println("----- Vehicle Details -----");
+        v.display();
+
+        System.out.println("\n----- Parking Slot -----");
+        System.out.println("Slot Number: " + slot.slotNumber);
+        System.out.println("Occupied: " + slot.occupied);
+
+        System.out.println("\n----- Parking Ticket -----");
+        ticket.display();
+    }
+}
