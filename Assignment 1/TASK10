@@ -1,0 +1,56 @@
+
+class Parking {
+    private String vehicleNumber;
+    private int slotNumber;
+    private int duration;
+
+    public void setVehicleNumber(String number) {
+        vehicleNumber = number;
+    }
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setSlotNumber(int slot) {
+        if (slot > 0) {
+            slotNumber = slot;
+        } else {
+            System.out.println("Invalid slot number");
+        }
+    }
+
+    public int getSlotNumber() {
+        return slotNumber;
+    }
+
+    public void setDuration(int hours) {
+        if (hours > 0) {
+            duration = hours;
+        } else {
+            System.out.println("Invalid duration");
+        }
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Parking p = new Parking();
+
+        p.setVehicleNumber("TN01A1");
+        p.setSlotNumber(5);
+        p.setDuration(3);
+
+        System.out.println("Vehicle: " + p.getVehicleNumber());
+        System.out.println("Slot: " + p.getSlotNumber());
+        System.out.println("Duration: " + p.getDuration());
+
+        p.setSlotNumber(-2);
+        p.setDuration(-1);
+    }
+}
