@@ -1,0 +1,32 @@
+public class Main {
+    public static void main(String[] args) {
+
+        int slotNumber = 1;
+        String vehicleNumber = "TN01AB1111";
+        int entryTime = 9;
+        int exitTime = 12;
+
+        int duration = exitTime - entryTime;
+
+        double fee = duration * 30.0;
+
+        String[][] slots = {
+            {"Car", "Bike"},
+            {"Car", "Empty"}
+        };
+
+        System.out.println("Slot Number: " + slotNumber);
+        System.out.println("Vehicle Number: " + vehicleNumber);
+        System.out.println("Entry Time: " + entryTime);
+        System.out.println("Duration: " + duration + " hours");
+        System.out.println("Parking Fee: Rs." + fee);
+
+        System.out.println("Parking Slots:");
+        for (int i = 0; i < slots.length; i++) {
+            for (int j = 0; j < slots[i].length; j++) {
+                System.out.print(slots[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
